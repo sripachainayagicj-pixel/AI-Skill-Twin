@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #0D1117;
+    color: #E6EDF3;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #161B22;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #30363D;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #484F58;
+  }
+
+  input, textarea, select {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .twin-pulse-ring {
+    background: radial-gradient(
+      ellipse at center,
+      rgba(47, 129, 247, 0.15) 0%,
+      rgba(47, 129, 247, 0.05) 40%,
+      transparent 70%
+    );
+    animation: pulseGlow 3s ease-in-out infinite;
+  }
+
+  .sidebar-link {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary text-sm font-medium transition-all duration-150 cursor-pointer relative;
+  }
+
+  .sidebar-link:hover {
+    @apply bg-bg-elevated text-text-primary;
+  }
+
+  .sidebar-link.active {
+    @apply bg-bg-elevated text-accent-blue;
+    box-shadow: inset 3px 0 0 #2F81F7;
+  }
+
+  .card {
+    @apply bg-bg-surface border border-border rounded-xl shadow-card;
+  }
+
+  .btn-primary {
+    @apply bg-accent-blue hover:bg-blue-500 text-white font-medium px-4 py-2 rounded-lg transition-all duration-150 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply bg-bg-elevated hover:bg-border text-text-primary font-medium px-4 py-2 rounded-lg border border-border transition-all duration-150 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-ghost {
+    @apply hover:bg-bg-elevated text-text-secondary hover:text-text-primary font-medium px-4 py-2 rounded-lg transition-all duration-150 flex items-center gap-2;
+  }
+
+  .btn-danger {
+    @apply bg-danger hover:bg-red-600 text-white font-medium px-4 py-2 rounded-lg transition-all duration-150 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .input-field {
+    @apply bg-bg-elevated border border-border rounded-md px-3 py-2 text-text-primary text-sm placeholder-text-muted focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-colors w-full;
+  }
+
+  .label {
+    @apply text-text-secondary text-xs font-medium uppercase tracking-wide mb-1 block;
+  }
+
+  .section-header {
+    @apply text-text-primary font-semibold text-base mb-4 flex items-center gap-2;
+  }
+
+  .badge-success {
+    @apply bg-success/10 text-success border border-success/20 text-xs font-medium px-2.5 py-0.5 rounded-full;
+  }
+
+  .badge-warning {
+    @apply bg-warning/10 text-warning border border-warning/20 text-xs font-medium px-2.5 py-0.5 rounded-full;
+  }
+
+  .badge-danger {
+    @apply bg-danger/10 text-danger border border-danger/20 text-xs font-medium px-2.5 py-0.5 rounded-full;
+  }
+
+  .badge-blue {
+    @apply bg-accent-blue/10 text-accent-blue border border-accent-blue/20 text-xs font-medium px-2.5 py-0.5 rounded-full;
+  }
+
+  .badge-muted {
+    @apply bg-bg-elevated text-text-muted border border-border text-xs font-medium px-2.5 py-0.5 rounded-full;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.animate-fade-in { animation: fadeIn 0.2s ease-out; }
+.animate-slide-in { animation: slideInLeft 0.25s ease-out; }
+
+.font-mono { font-family: 'JetBrains Mono', monospace; }
